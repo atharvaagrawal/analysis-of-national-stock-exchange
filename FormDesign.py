@@ -6,6 +6,10 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+'''
+Script for UI Design of Technical Analysis of National Stock Exchange
+'''
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 from NIFTY50.StoreDataIntoDataBaseNIFTY50 import StoreIntoDatabaseNifity50
