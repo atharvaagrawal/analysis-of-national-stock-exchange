@@ -1,15 +1,17 @@
+Main Database:
 Create Database Nifty;
 
 
+Table NiftyAll for Bhavcopy Data All stock Symbol:
 Create Table  NiftyAll( Symbol varchar(30) , Series varchar(20) , Open double , High double , Low double , Close double , Last double ,PrevClose double , TOTTRDQTY  double , 
   TOTTRDVAL double, TIMESTAMP Date , TOTALTRADES double, ISIN varchar(30) , PRIMARY KEY(Symbol,TimeStamp,ISIN) );
 
 
-Create Table Nifty50( TIMESTAMP Date , Symbol varchar(30)  ,Open double , High double , Low double , LastTradedPrice double, ChangeValue double, 
-ChangePercentage double , TradedVolumeLacs double , TradedValueCrs double, Week52High double , Week52Low double, Days365PercentageChange double,
-Days30PercentageChange double ,   PRIMARY KEY(TIMESTAMP ,Symbol ) );
+Table Nifty50 for Daily Report of Top 50 Stock Symbol:
+Create Table Nifty50( TIMESTAMP Date , Symbol varchar(30)  ,Open double , High double , Low double , LastTradedPrice double, ChangeValue double, ChangePercentage double , TradedVolumeLacs double , TradedValueCrs double, Week52High double , Week52Low double, Days365PercentageChange double,Days30PercentageChange double ,   PRIMARY KEY(TIMESTAMP ,Symbol ) );
 
 
+Table Nifty50Dervied in this Top 50 Stock Symbol Record from NiftyAll:
 Create Table Nifty50Dervied( Symbol varchar(30) , Series varchar(20) , Open double , High double , Low double , Close double , Last double ,PrevClose double , TOTTRDQTY  double , 
   TOTTRDVAL double, TIMESTAMP Date , TOTALTRADES double, ISIN varchar(30) , PRIMARY KEY(Symbol,TimeStamp,ISIN) );
 
