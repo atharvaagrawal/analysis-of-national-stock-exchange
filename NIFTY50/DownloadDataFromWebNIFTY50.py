@@ -1,13 +1,14 @@
-# to remove file
-
 import os
 import easygui
 from selenium import webdriver
 
+'''
+Script to download daily Nifty50 Data From Web
+'''
 class DownloadDataFromWebNIFTY50:
 
     def downloadNifty50(self):
-
+        # to remove file
         try:
             os.remove("data.csv")
         except OSError:
@@ -17,7 +18,7 @@ class DownloadDataFromWebNIFTY50:
         profile = webdriver.FirefoxProfile()
         profile.set_preference('browser.download.folderList', 2) # custom location
         profile.set_preference('browser.download.manager.showWhenStarting', False)
-        profile.set_preference('browser.download.dir', 'F:\\Python CSV\\1 Main Technical Analysis of National Stock Exchange')
+        profile.set_preference('browser.download.dir', '[Path to Store Downloaded File]')
         profile.set_preference('browser.helperApps.neverAsk.saveToDisk', 'text/csv')
 
         driver = webdriver.Firefox(profile)
