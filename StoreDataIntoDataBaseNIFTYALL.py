@@ -10,7 +10,7 @@ from mysql.connector import errorcode
 
 class StoreIntoDatabaseNiftyAll:
     def executeStoreNiftyAll(self):
-        easygui.msgbox("Download the data on this Location F:\Python CSV\1 Main Technical Analysis of National Stock Exchange with name as NiftyAll.csv ",
+        easygui.msgbox("Download the data on this Location [Enter Location] with name as NiftyAll.csv ",
                        title="Process Message")
         asyncio.wait(1000);
 
@@ -46,7 +46,7 @@ class StoreIntoDatabaseNiftyAll:
         print("Ok")
         # DataBase Connection
         try:
-            connection = mysql.connector.connect(host='localhost', database='Nifty', user='Atharva', password='Atharva@007')
+            connection = mysql.connector.connect(host='localhost', database='Nifty', user='root', password='[Enter Password]')
             cursor = connection.cursor()
             # to check repeated record
             qry = "Select * from NiftyAll"
