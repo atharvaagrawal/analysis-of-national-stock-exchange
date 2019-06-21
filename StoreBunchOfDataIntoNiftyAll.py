@@ -8,12 +8,14 @@ from datetime import datetime
 from mysql.connector import Error
 from mysql.connector import errorcode
 
+# To Store Daily Bunch of record Based on Bhavcopy FileName in Numeric Order
+# Ex: I have Bhav Copy Files from 1 May to 15 May as 1.csv , 2.csv, ... ,15.csv So then I can Insert the
+# Data of All this File at once using this Python Script
 class StoreBunchofDataIntoNiftyAll:
     def executeStoreNiftyAll(self):
 
         for i in range(2,12):
-
-            path = "F:\\Python CSV\\Storing Data into DB\\1 - 15  May 2019\\"+str(i)+".csv"
+            path = "[Path]"+str(i)+".csv"
             if not os.path.exists(path):
                 easygui.msgbox("First Download the file", title="Process Message")
                 return
@@ -45,7 +47,7 @@ class StoreBunchofDataIntoNiftyAll:
             print("Ok")
             # DataBase Connection
             try:
-                connection = mysql.connector.connect(host='localhost', database='Nifty', user='Atharva', password='Atharva@007')
+                connection = mysql.connector.connect(host='localhost', database='Nifty', user='root', password='[Enter Password]')
                 cursor = connection.cursor()
                 # to check repeated record
                 qry = "Select * from NiftyAll"
@@ -70,7 +72,7 @@ class StoreBunchofDataIntoNiftyAll:
                             connection.close()
                             file.close()
                         return
-                    # Loop to store data
+                # Loop to store data
                 for i in data:
                     cursor.execute(""" INSERT INTO NiftyAll VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                                    (i[0], i[1], i[2], i[3], i[4] , i[5], i[6], i[7], i[8], i[9]  , i[10],i[11],i[12] ) )
