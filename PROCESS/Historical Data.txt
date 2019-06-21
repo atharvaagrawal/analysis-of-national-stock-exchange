@@ -1,1 +1,4 @@
-https://www.nseindia.com/products/content/equities/equities/archieve_eq.htm
+Historical Data of Stock: https://www.nseindia.com/products/content/equities/equities/archieve_eq.htm
+Inside this select report type as: Bhavcopy and enter date of report you want.
+
+Daily Nifty 50 Stock Data: https://www.nseindia.com/live_market/dynaContent/live_watch/equities_stock_watch.htm
