@@ -1,0 +1,29 @@
+
+call python -m PyQt5.uic.pyuic -x f1.ui -o f2.py
+
+
+*) pip install --upgrade pip
+
+1) Install MySQL server (https://dev.mysql.com/downloads/installer/)
+
+2) Install mysql-connector
+ pip install mysql-connector
+
+3) pip install schedule
+
+4) pip install -U selenium
+
+5) pip install matplotlib
+
+6) pip install jupyter
+
+7) pip install pandas
+
+8) 
+
+
+
+
+
+
+
