@@ -7,44 +7,28 @@ from datetime import datetime
 from mysql.connector import Error
 from mysql.connector import errorcode
 
+'''
+This Script is for too Copy the Data of NiftyALL i.e the Bhavcopy Data to Nifty50Derived Table 
+which contain only Top 50 Nifty Symbol.
+'''
 class Nifty50FromNiftyAll:
     def copyData(self):
         # DataBase Connection
         print("Hellos")
         try:
-            connection = mysql.connector.connect(host='localhost', database='Nifty', user='Atharva', password='Atharva@007')
+            connection = mysql.connector.connect(host='localhost', database='Nifty', user='root', password='[Enter Password]')
             cursor = connection.cursor()
             # to check repeated record
             qry = "Select *  from NiftyAll"
             pdata = pd.read_sql_query(qry, connection)
+            
             if pdata.empty == True:
                 easygui.msgbox("NiftyAll table is Empty", title="Process Message")
                 if (connection.is_connected()):
                     cursor.close()
                     connection.close()
                 return
-
-            '''else:
-                qry = "Select *  from NiftyAll  where Symbol = (Select DISTINCT SYMBOL FROM NIFTY50 WHERE NIFTY50.SYMBOL = NIFTYALL.SYMBOL)  and Series='EQ'"
-                pdata = pd.read_sql_query(qry, connection)
-                
-                pdata['TIMESTAMP'] = pd.to_datetime(pdata.TIMESTAMP)
-                todaysday = datetime.today().strftime('%Y-%m-%d')
-                ts = pd.to_datetime(todaysday) #Todays Date
-                diff =  pdata.tail(1).TIMESTAMP - pdata.tail(51).TIMESTAMP
-                print(pdata.tail(1).TIMESTAMP)
-                # Converting into int
-                daystocheck = int(diff.dt.days)
-                print(daystocheck)
-
-                if daystocheck >= 0:
-                    easygui.msgbox("This Data is already Present or Older Data. Please download new Data.", title="Process Message")
-                    if (connection.is_connected()):
-                        cursor.close()
-                        connection.close()
-                    return
-            '''
-
+            
             sql_select_Query = "Select *  from NiftyAll  where Symbol = (Select DISTINCT SYMBOL FROM NIFTY50 WHERE NIFTY50.SYMBOL = NIFTYALL.SYMBOL)  and Series='EQ'"
             cursor.execute(sql_select_Query)
             records = cursor.fetchall()
