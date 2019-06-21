@@ -8,6 +8,9 @@ from datetime import datetime
 from mysql.connector import Error
 from mysql.connector import errorcode
 
+'''
+This Script is for Storing the Bhavcopy data into Database.
+'''
 class StoreIntoDatabaseNiftyAll:
     def executeStoreNiftyAll(self):
         easygui.msgbox("Download the data on this Location [Enter Location] with name as NiftyAll.csv ",
