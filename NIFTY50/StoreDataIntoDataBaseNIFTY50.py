@@ -8,11 +8,13 @@ from datetime import datetime
 import easygui
 import asyncio
 
+'''
+Script to insert the Nifty50 Daily data into Database. 
+'''
+
 class StoreIntoDatabaseNifity50:
     def executeStore(self):
-        easygui.msgbox(
-            "Download the data on this Location F:\Python CSV\1 Main Technical Analysis of National Stock Exchange with name as data.csv ",
-            title="Process Message")
+        easygui.msgbox("Download the data on this Location [Enter Location] with name as data.csv ",title="Process Message")
         asyncio.wait(1000);
         todaysday = datetime.today().strftime('%Y-%m-%d')
         if not os.path.exists('data.csv'):
@@ -50,7 +52,7 @@ class StoreIntoDatabaseNifity50:
         # DataBase Connection
         
         try:
-            connection = mysql.connector.connect(host='localhost', database='Nifty', user='Atharva', password='Atharva@007')
+            connection = mysql.connector.connect(host='localhost', database='Nifty', user='root', password='[Enter Password]')
             cursor = connection.cursor()
             # to check repeated record
             qry = "Select * from Nifty50"
