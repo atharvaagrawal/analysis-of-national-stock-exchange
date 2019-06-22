@@ -77,6 +77,7 @@ StoreDataIntoDataBaseNIFTYALL.py
 
 
 <h2><u><b>Configue File: Config.cfg</b> </u></h2>
+
 For Database:
 1) host
 2) database
