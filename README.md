@@ -21,7 +21,7 @@ Avaliable Here: https://github.com/atharvaagrawal/analysis-of-national-stock-exc
 </tr>
     
 <tr>
-StoreDataIntoDataBaseNIFTYALL.py
+<td> StoreDataIntoDataBaseNIFTYALL.py</td> 
 <td> Script for Nifty All BhavCopy DataBase Store. </td>
 </tr>
 
