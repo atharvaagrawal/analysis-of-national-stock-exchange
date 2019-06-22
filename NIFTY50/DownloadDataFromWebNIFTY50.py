@@ -1,13 +1,17 @@
 import os
 import easygui
 from selenium import webdriver
+import configparser
 
 '''
 Script to download daily Nifty50 Data From Web
 '''
+
 class DownloadDataFromWebNIFTY50:
 
     def downloadNifty50(self):
+        config_obj = configparser.ConfigParser()
+        config_obj.read("F:\\Python CSV\\1 Main Technical Analysis of National Stock Exchange\\Config\\Config.cfg")
         # to remove file
         try:
             os.remove("data.csv")
@@ -18,7 +22,7 @@ class DownloadDataFromWebNIFTY50:
         profile = webdriver.FirefoxProfile()
         profile.set_preference('browser.download.folderList', 2) # custom location
         profile.set_preference('browser.download.manager.showWhenStarting', False)
-        profile.set_preference('browser.download.dir', '[Path to Store Downloaded File]')
+        profile.set_preference('browser.download.dir', config_obj.get("Setting","web_download_nifty50"))
         profile.set_preference('browser.helperApps.neverAsk.saveToDisk', 'text/csv')
 
         driver = webdriver.Firefox(profile)
