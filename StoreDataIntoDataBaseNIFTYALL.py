@@ -7,21 +7,27 @@ import easygui
 from datetime import datetime
 from mysql.connector import Error
 from mysql.connector import errorcode
-
+import configparser
 '''
 This Script is for Storing the Bhavcopy data into Database.
 '''
 class StoreIntoDatabaseNiftyAll:
     def executeStoreNiftyAll(self):
-        easygui.msgbox("Download the data on this Location [Enter Location] with name as NiftyAll.csv ",
-                       title="Process Message")
-        asyncio.wait(1000);
 
-        if not os.path.exists('NiftyAll.csv'):
+        config_obj = configparser.ConfigParser()
+        config_obj.read("F:\\Python CSV\\1 Main Technical Analysis of National Stock Exchange\\Config\\Config.cfg")
+
+        path = config_obj.get("Setting", "nifty_all_file_path")
+
+        download_path="Download the data on this Location: "+path+" with name as NiftyAll.csv "
+
+        easygui.msgbox(download_path,title="Process Message")
+
+        if not os.path.exists(path):
             easygui.msgbox("First Download the file", title="Process Message")
             return
 
-        path = "NiftyAll.csv"
+
         file = open(path, newline='')
         reader = csv.reader(file)
 
@@ -49,7 +55,10 @@ class StoreIntoDatabaseNiftyAll:
         print("Ok")
         # DataBase Connection
         try:
-            connection = mysql.connector.connect(host='localhost', database='Nifty', user='root', password='[Enter Password]')
+            connection = mysql.connector.connect(host=config_obj.get("Setting", "host"),
+                                                 database=config_obj.get("Setting", "database"),
+                                                 user=config_obj.get("Setting", "user"),
+                                                 password=config_obj.get("Setting", "password"))
             cursor = connection.cursor()
             # to check repeated record
             qry = "Select * from NiftyAll"
