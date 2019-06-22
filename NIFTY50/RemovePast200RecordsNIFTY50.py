@@ -2,15 +2,23 @@ import re
 import mysql.connector
 import pandas as pd
 import easygui
-
+import configparser
 from datetime import datetime , date, time, timedelta
+
 '''
 Script to delete Past 200 Days Record From Nifty50 Table if Data is more than 200 days then only delete data from DataBase. 
 '''
+
 def remove200():
-    connection = mysql.connector.connect(host='localhost', database='Nifty', user='root', password='[Enter Password]')
+    config_obj = configparser.ConfigParser()
+    config_obj.read("F:\\Python CSV\\1 Main Technical Analysis of National Stock Exchange\\Config\\Config.cfg")
 
     try:
+        connection = mysql.connector.connect(host=config_obj.get("Setting", "host"),
+                                             database=config_obj.get("Setting", "database"),
+                                             user=config_obj.get("Setting", "user"),
+                                             password=config_obj.get("Setting", "password"))
+
         todaysday=datetime.today().strftime('%Y-%m-%d')
         qry = "Select * from Nifty50"
         cursor = connection.cursor()
