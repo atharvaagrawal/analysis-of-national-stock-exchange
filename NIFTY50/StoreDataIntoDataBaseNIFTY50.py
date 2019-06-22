@@ -7,21 +7,31 @@ from mysql.connector import errorcode
 from datetime import datetime
 import easygui
 import asyncio
+import configparser
 
 '''
 Script to insert the Nifty50 Daily data into Database. 
 '''
 
 class StoreIntoDatabaseNifity50:
+
     def executeStore(self):
-        easygui.msgbox("Download the data on this Location [Enter Location] with name as data.csv ",title="Process Message")
-        asyncio.wait(1000);
+
+        config_obj = configparser.ConfigParser()
+        config_obj.read("F:\\Python CSV\\1 Main Technical Analysis of National Stock Exchange\\Config\\Config.cfg")
+
+        path = config_obj.get("Setting","nifty50_file_path")
+
+        download_path = "Download the data on this Location:"+path+" with name as data.csv"
+        easygui.msgbox(download_path,title="Process Message")
+
+
         todaysday = datetime.today().strftime('%Y-%m-%d')
         if not os.path.exists('data.csv'):
             easygui.msgbox("First Download the file", title="Process Message")
             return
 
-        path = "data.csv"
+
         file = open(path, newline='')
         reader = csv.reader(file)
 
@@ -47,12 +57,17 @@ class StoreIntoDatabaseNifity50:
             Days30PercentageChange= float(row[12].replace(',', ''))
 
             count += 1
-            data.append([todaysday, Symbol, Open, High, Low,LastTradedPrice,ChangeValue,ChangePercentage,TradedVolumeLacs,TradedValueCrs,Week52High,Week52Low,Days365PercentageChange,Days30PercentageChange])
+            data.append([todaysday, Symbol, Open, High, Low,LastTradedPrice,ChangeValue,ChangePercentage,
+                         TradedVolumeLacs,TradedValueCrs,Week52High,Week52Low,Days365PercentageChange,
+                         Days30PercentageChange])
         print("Ok")
         # DataBase Connection
         
         try:
-            connection = mysql.connector.connect(host='localhost', database='Nifty', user='root', password='[Enter Password]')
+            connection = mysql.connector.connect(host=config_obj.get("Setting", "host"),
+                                                 database=config_obj.get("Setting", "database"),
+                                                 user=config_obj.get("Setting", "user"),
+                                                 password=config_obj.get("Setting", "password"))
             cursor = connection.cursor()
             # to check repeated record
             qry = "Select * from Nifty50"
@@ -70,7 +85,8 @@ class StoreIntoDatabaseNifity50:
                 print(daystocheck)
 
                 if daystocheck >= 0:
-                    easygui.msgbox("This Data is already Present or Older Data . Please download new Data.", title="Process Message")
+                    easygui.msgbox("This Data is already Present or Older Data . Please download new Data.",
+                                   title="Process Message")
                     if (connection.is_connected()):
                         cursor.close()
                         connection.close()
@@ -79,7 +95,8 @@ class StoreIntoDatabaseNifity50:
                 # Loop to store data
             for i in data:
                 cursor.execute(""" INSERT INTO Nifty50 VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
-                               (i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10], i[11], i[12], i[13]))
+                               (i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10],
+                                i[11], i[12], i[13]))
             connection.commit()
             easygui.msgbox("Record inserted successfully into Nifty50 table", title="Process Message")
         except mysql.connector.Error as error:
