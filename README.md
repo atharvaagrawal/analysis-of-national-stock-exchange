@@ -51,18 +51,21 @@ Avaliable Here: https://github.com/atharvaagrawal/analysis-of-national-stock-exc
 <td>Script to Store All Data of One Folder to DataBase of BhavCopy. </td>
 </tr>
     
+<tr> 
+<td>CheckForRemainingDayNiftyAll.py</td>
+<td>Script to Check from which date NiftyAll Data is Absent </td>
+</tr>
+
+<tr> 
+<td>UpdateDataNiftyAllForRemainingDays.py</td>
+<td>Script to Store Data in NiftyAll For Remaining Days </td>
+</tr>
+
+
 </table>
 
 <h2><u><b>Extra Files:</b> </u></h2>
 <table>
-<tr > 
-    <td>data.csv:</td>
-    <td>File for daily Nifty50</td> 
-</tr>
-<tr>
-    <td>NiftyAll.csv:</td> 
-    <td>File for BhavaCopy All Stock Symbol</td>
-</tr>
 <tr>
 <td>geckodriver.exe:</td>
 <td>In this geckodriver is for downloading data from web using selenium. Required for Mozilla Firefox.</td>
@@ -89,3 +92,4 @@ For File Path:
 2) web_download_nifty50 
 3) nifty_all_file_path 
 4) nifty50_file_path
+5) nifty_all_update_file_path
