@@ -9,7 +9,7 @@ from mysql.connector import Error
 from mysql.connector import errorcode
 import configparser
 '''
-This Script is for Storing the Bhavcopy data into Database.
+Script to store Data for remaining absent days
 '''
 class UpdateDataNiftyAllForRemainingDays:
     def executeUpdateNiftyAll(self):
