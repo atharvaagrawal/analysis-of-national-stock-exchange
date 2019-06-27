@@ -11,7 +11,7 @@ Script to delete Past 200 Days Record From Nifty50 Table if Data is more than 20
 
 def remove200():
     config_obj = configparser.ConfigParser()
-    config_obj.read("F:\\Python CSV\\1 Main Technical Analysis of National Stock Exchange\\Config\\Config.cfg")
+    config_obj.read("Y:\\Python CSV\\1 Main Technical Analysis of National Stock Exchange\\Config\\Config.cfg")
 
     try:
         connection = mysql.connector.connect(host=config_obj.get("Setting", "host"),
@@ -62,5 +62,3 @@ def remove200():
         if(connection.is_connected()):
             connection.close()
             easygui.msgbox("MySQL connection is closed", title="Process Message")
-
-remove200()
