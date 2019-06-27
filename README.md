@@ -93,3 +93,29 @@ For File Path:
 3) nifty_all_file_path 
 4) nifty50_file_path
 5) nifty_all_update_file_path
+
+
+<h2><u><b> Directory Info: </b> </u></h2>
+<table>
+
+<tr>
+<td>NIFTY50:</td>
+<td>Contains Script related to Nifty50 </td>
+</tr>
+
+<tr>
+<td>Data File:</td>
+<td>Contains data file to store into database.</td>
+</tr>
+
+<tr>
+<td>Config:</td>
+<td>Contains Configure file </td>
+</tr>
+
+<tr>
+<td>PROCESS:</td> 
+<td>Contains structure of Project. </td>    
+</tr>
+</table>
+
