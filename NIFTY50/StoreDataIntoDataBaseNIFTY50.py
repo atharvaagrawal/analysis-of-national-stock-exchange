@@ -18,7 +18,7 @@ class StoreIntoDatabaseNifity50:
     def executeStore(self):
 
         config_obj = configparser.ConfigParser()
-        config_obj.read("F:\\Python CSV\\1 Main Technical Analysis of National Stock Exchange\\Config\\Config.cfg")
+        config_obj.read("Y:\\Python CSV\\1 Main Technical Analysis of National Stock Exchange\\Config\\Config.cfg")
 
         path = config_obj.get("Setting","nifty50_file_path")
 
