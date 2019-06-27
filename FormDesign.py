@@ -6,10 +6,6 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-'''
-Script for UI Design of Technical Analysis of National Stock Exchange
-'''
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 from NIFTY50.StoreDataIntoDataBaseNIFTY50 import StoreIntoDatabaseNifity50
@@ -17,6 +13,11 @@ from NIFTY50.DownloadDataFromWebNIFTY50 import DownloadDataFromWebNIFTY50
 from NIFTY50FROMNIFTYALL  import Nifty50FromNiftyAll
 from StoreDataIntoDataBaseNIFTYALL import StoreIntoDatabaseNiftyAll
 from Calculation import CalculationClass
+from CheckForRemainingDayNiftyAll import CheckForRemainingDayNiftyAll
+from UpdateDataNiftyAllForRemainingDays import UpdateDataNiftyAllForRemainingDays
+'''
+Script for UI Design of Technical Analysis of National Stock Exchange
+'''
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -64,6 +65,22 @@ class Ui_MainWindow(object):
         self.btnNiftyAll.setStyleSheet("")
         self.btnNiftyAll.setObjectName("btnNiftyAll")
         self.verticalLayout_3.addWidget(self.btnNiftyAll)
+        self.btnNifty50 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btnNifty50.sizePolicy().hasHeightForWidth())
+        self.btnNifty50.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Times New Roman")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.btnNifty50.setFont(font)
+        self.btnNifty50.setStyleSheet("")
+        self.btnNifty50.setObjectName("btnNifty50")
+        self.verticalLayout_3.addWidget(self.btnNifty50)
         self.btnNifty50FromNiftyAll = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -86,22 +103,38 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout()
         self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.btnNifty50 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        self.btnRemainingDayNiftyAll = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.btnNifty50.sizePolicy().hasHeightForWidth())
-        self.btnNifty50.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.btnRemainingDayNiftyAll.sizePolicy().hasHeightForWidth())
+        self.btnRemainingDayNiftyAll.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(14)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
-        self.btnNifty50.setFont(font)
-        self.btnNifty50.setStyleSheet("")
-        self.btnNifty50.setObjectName("btnNifty50")
-        self.verticalLayout_4.addWidget(self.btnNifty50)
+        self.btnRemainingDayNiftyAll.setFont(font)
+        self.btnRemainingDayNiftyAll.setStyleSheet("")
+        self.btnRemainingDayNiftyAll.setObjectName("btnRemainingDayNiftyAll")
+        self.verticalLayout_4.addWidget(self.btnRemainingDayNiftyAll)
+        self.btnUpdateDataNiftyAll = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btnUpdateDataNiftyAll.sizePolicy().hasHeightForWidth())
+        self.btnUpdateDataNiftyAll.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Times New Roman")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.btnUpdateDataNiftyAll.setFont(font)
+        self.btnUpdateDataNiftyAll.setStyleSheet("")
+        self.btnUpdateDataNiftyAll.setObjectName("btnUpdateDataNiftyAll")
+        self.verticalLayout_4.addWidget(self.btnUpdateDataNiftyAll)
         self.btnDownloadNifty50 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -154,6 +187,12 @@ class Ui_MainWindow(object):
         self.objCalculation = CalculationClass()
         self.btnCalculation.clicked.connect(self.objCalculation.calculatingData)
 
+        self.objCheckRemaining = CheckForRemainingDayNiftyAll()
+        self.btnRemainingDayNiftyAll.clicked.connect(self.objCheckRemaining.remainingDayData)
+
+        self.objUpdateNiftyAll = UpdateDataNiftyAllForRemainingDays()
+        self.btnUpdateDataNiftyAll.clicked.connect(self.objUpdateNiftyAll.executeUpdateNiftyAll)
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -162,8 +201,10 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Technical Analysis of National Stock Exchange"))
         self.lblHeading.setText(_translate("MainWindow", "Technical Analysis of National Stock Exchange"))
         self.btnNiftyAll.setText(_translate("MainWindow", "Nifty All"))
-        self.btnNifty50FromNiftyAll.setText(_translate("MainWindow", "NIFTY 50 FROM NIFTY ALL"))
         self.btnNifty50.setText(_translate("MainWindow", "NIFTY 50"))
+        self.btnNifty50FromNiftyAll.setText(_translate("MainWindow", "NIFTY 50 FROM NIFTY ALL"))
+        self.btnRemainingDayNiftyAll.setText(_translate("MainWindow", "Check For Remaining Days Nifty All"))
+        self.btnUpdateDataNiftyAll.setText(_translate("MainWindow", "Update Daya Nifty All For Remaining Days"))
         self.btnDownloadNifty50.setText(_translate("MainWindow", "Download NIFTY 50"))
         self.btnCalculation.setText(_translate("MainWindow", "CALCULATION"))
 
