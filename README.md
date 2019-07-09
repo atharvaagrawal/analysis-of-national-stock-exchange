@@ -12,7 +12,7 @@ the databases(check this) and (Python QT the technology which was used to design
 
 
 
-<b>Disadvantages:</b> 
+<b>Limitations of NSE Website:</b> 
 1) As the data available on NSE website is of csv format so we have to face certain problem like Accessing Anomalies , Inconsistency , Duplicate data So on this type of data we firstly converted it into the Table Data in Database.
 
 2) And then we have daily download the data by visiting on website and then download and afterwards store into database we automated this process by just single click on button now you can download the file.
