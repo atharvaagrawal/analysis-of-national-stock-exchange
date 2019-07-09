@@ -5,7 +5,7 @@ This project is an implementation of  automating the storage of NSE data into da
 
 The purpose is to store the data in separate tables and to have a view of all the data conceretly which can further help the customers/users for easy understanding of prevalent market conditions.
 
-To achieve the same,we hv done evaluation on an interesting dataset and have analysed the obtained results
+To achieve the same, we have done evaluation on an interesting dataset and have analysed the obtained results
 
 A Database was created at first to store the data,python language was used as medium to communicate between 
 the databases(check this) and (Python QT the technology which was used to design UI)
