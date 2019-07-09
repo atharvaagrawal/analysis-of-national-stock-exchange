@@ -1,5 +1,33 @@
 <h1><u> <center>Technical Analysis of National Stock Exchange</center> </u></h1>
 
+<h2><u>Introduction</h2></u>
+This project is an implementation of  automating the storage of NSE data into database
+
+The purpose is to store the data in separate tables and to have a view of all the data conceretly which can further help the customers/users for easy understanding of prevalent market conditions.
+
+To achieve the same,we hv done evaluation on an interesting dataset and have analysed the obtained results
+
+A Database was created at first to store the data,python language was used as medium to communicate between 
+the databases(check this) and (Python QT the technology which was used to design UI)
+
+
+
+<b>Disadvantages:</b> 
+1) As the data available on NSE website is of csv format so we have to face certain problem like Accessing Anomalies , Inconsistency , Duplicate data So on this type of data we firstly converted it into the Table Data in Database.
+
+2) And then we have daily download the data by visiting on website and then download and afterwards store into database we automated this process by just single click on button now you can download the file.
+
+3) As the NSE Doesn't show that which share can be more profitable to buy I tried my best to predict it.
+
+
+<b>Future Plan:</b>
+1) To predict the stock more accurately by adding more number of parameters.
+2) To predict GDP growth of India. 
+3) To show different types of charts based on data available.
+
+
+
+
 <h2><u><b> Versions</b> </u></h2>
  Python Version: 3.7
  DataBase: MySql Server 8.0
