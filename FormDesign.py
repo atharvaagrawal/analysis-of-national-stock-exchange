@@ -8,18 +8,29 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+import CalculationUI
 from NIFTY50.StoreDataIntoDataBaseNIFTY50 import StoreIntoDatabaseNifity50
 from NIFTY50.DownloadDataFromWebNIFTY50 import DownloadDataFromWebNIFTY50
 from NIFTY50FROMNIFTYALL  import Nifty50FromNiftyAll
 from StoreDataIntoDataBaseNIFTYALL import StoreIntoDatabaseNiftyAll
-from Calculation import CalculationClass
 from CheckForRemainingDayNiftyAll import CheckForRemainingDayNiftyAll
 from UpdateDataNiftyAllForRemainingDays import UpdateDataNiftyAllForRemainingDays
+
+from CalculationUI import CalculationUi_MainWindow
+
 '''
 Script for UI Design of Technical Analysis of National Stock Exchange
 '''
 
 class Ui_MainWindow(object):
+
+    def openCalculationUI(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = CalculationUi_MainWindow()
+        self.ui.setupUi(self.window)
+        MainWindow.hide()
+        self.window.show()
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(930, 435)
@@ -184,14 +195,13 @@ class Ui_MainWindow(object):
         self.objNiftyAll = StoreIntoDatabaseNiftyAll()
         self.btnNiftyAll.clicked.connect(self.objNiftyAll.executeStoreNiftyAll)
 
-        self.objCalculation = CalculationClass()
-        self.btnCalculation.clicked.connect(self.objCalculation.calculatingData)
-
         self.objCheckRemaining = CheckForRemainingDayNiftyAll()
         self.btnRemainingDayNiftyAll.clicked.connect(self.objCheckRemaining.remainingDayData)
 
         self.objUpdateNiftyAll = UpdateDataNiftyAllForRemainingDays()
         self.btnUpdateDataNiftyAll.clicked.connect(self.objUpdateNiftyAll.executeUpdateNiftyAll)
+
+        self.btnCalculation.clicked.connect(self.openCalculationUI)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
