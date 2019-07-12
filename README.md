@@ -5,10 +5,10 @@ This project is an implementation of  automating the storage of NSE data into da
 
 The purpose is to store the data in separate tables and to have a view of all the data conceretly which can further help the customers/users for easy understanding of prevalent market conditions.
 
-To achieve the same, we have done evaluation on an interesting dataset and have analysed the obtained results
+To achieve the same, we have done evaluation on an interesting dataset and have analysed the obtained results.
 
 A Database was created at first to store the data,python language was used as medium to communicate between 
-the databases(check this) and (Python QT the technology which was used to design UI)
+the databases(MySQL) and (Python QT) the technology which was used to design UI.
 
 
 
@@ -49,6 +49,23 @@ Avaliable Here: https://github.com/atharvaagrawal/analysis-of-national-stock-exc
 </tr>
     
 <tr>
+<td> CalculationUI.py </td>
+<td> Calculation File Contain Design of Calculation and We can navigate to different scripts through this file. </td>
+</tr>    
+
+<tr>
+<td>StoreDataIntoDataBaseNIFTY50.py</td>
+<td>Script to Store Nifty50 DataBase. </td>
+</tr>
+
+
+<tr> 
+<td>StoreBunchOfDataIntoNiftyAll.py</td>
+<td>Script to Store All Data of One Folder to DataBase of BhavCopy. </td>
+</tr>
+    
+
+<tr>
 <td> StoreDataIntoDataBaseNIFTYALL.py</td> 
 <td> Script for Nifty All BhavCopy DataBase Store. </td>
 </tr>
@@ -68,17 +85,7 @@ Avaliable Here: https://github.com/atharvaagrawal/analysis-of-national-stock-exc
 <td> Remove Past 200 days Record From Nifty50 </td>
 </tr>
 
-<tr>
-<td>StoreDataIntoDataBaseNIFTY50.py</td>
-<td>Script to Store Nifty50 DataBase. </td>
-</tr>
 
-
-<tr> 
-<td>StoreBunchOfDataIntoNiftyAll.py</td>
-<td>Script to Store All Data of One Folder to DataBase of BhavCopy. </td>
-</tr>
-    
 <tr> 
 <td>CheckForRemainingDayNiftyAll.py</td>
 <td>Script to Check from which date NiftyAll Data is Absent </td>
