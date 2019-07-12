@@ -96,6 +96,10 @@ Avaliable Here: https://github.com/atharvaagrawal/analysis-of-national-stock-exc
 <td>Script to Store Data in NiftyAll For Remaining Days </td>
 </tr>
 
+<tr>
+<td> CalculatingLast5Days.py </td>
+<td> Calculating Last 5 Days Record. </td>
+</tr>    
 
 </table>
 
