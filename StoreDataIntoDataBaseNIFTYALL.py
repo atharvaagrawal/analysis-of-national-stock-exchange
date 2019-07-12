@@ -15,7 +15,7 @@ class StoreIntoDatabaseNiftyAll:
     def executeStoreNiftyAll(self):
 
         config_obj = configparser.ConfigParser()
-        config_obj.read("F:\\Python CSV\\1 Main Technical Analysis of National Stock Exchange\\Config\\Config.cfg")
+        config_obj.read("Y:\\Python CSV\\1 Main Technical Analysis of National Stock Exchange\\Config\\Config.cfg")
 
         path = config_obj.get("Setting", "nifty_all_file_path")
 
@@ -61,7 +61,7 @@ class StoreIntoDatabaseNiftyAll:
                                                  password=config_obj.get("Setting", "password"))
             cursor = connection.cursor()
             # to check repeated record
-            qry = "Select * from NiftyAll"
+            qry = "select * from NiftyAll ORDER BY TIMESTAMP ASC"
             pdata = pd.read_sql_query(qry, connection)
 
             if pdata.empty == True:
@@ -87,6 +87,9 @@ class StoreIntoDatabaseNiftyAll:
             for i in data:
                 cursor.execute(""" INSERT INTO NiftyAll VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
                                (i[0], i[1], i[2], i[3], i[4] , i[5], i[6], i[7], i[8], i[9]  , i[10],i[11],i[12] ) )
+                if( i[1]=='EQ' ):
+                    cursor.execute(""" INSERT INTO NiftyAllEQSeries VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                                   (i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8], i[9], i[10], i[11], i[12]))
             connection.commit()
             easygui.msgbox("Record inserted successfully into NiftyAll table", title="Process Message")
         except mysql.connector.Error as error:
@@ -99,5 +102,6 @@ class StoreIntoDatabaseNiftyAll:
                 connection.close()
                 file.close()
                 easygui.msgbox("MySQL connection is closed", title="Process Message")
+            return
 
 
