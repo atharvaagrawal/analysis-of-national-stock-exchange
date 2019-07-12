@@ -6,7 +6,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from CalculatingLast5Days import CalculatingLast5Days
+from Calculation.CalculatingLast5Days import CalculatingLast5Days
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class CalculationUi_MainWindow(object):
