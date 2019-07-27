@@ -1,4 +1,4 @@
-Install the Following plugins and Software: 
+Install the Following modules and Software: 
 
 *) pip install --upgrade pip
 
