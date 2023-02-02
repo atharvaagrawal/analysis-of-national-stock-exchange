@@ -32,12 +32,9 @@ the databases(MySQL) and (Python QT) the technology which was used to design UI.
  Python Version: 3.7
  DataBase: MySql Server 8.0
 
-<h2><u><b> Setup:</b> </u></h2>
-1) Design Preview Available
-2) DataBase
-3) Complete Python Setup
-Avaliable Here: https://github.com/atharvaagrawal/analysis-of-national-stock-exchange/tree/master/PROCESS
+<h2><u><b> Desktop App PyQt5 Output:</b> </u></h2>
 
+![](https://raw.githubusercontent.com/atharvaagrawal/analysis-of-national-stock-exchange/master/PROCESS/Design%20Preview.png)
 
 <h2><u><b> Python File:</b> </u></h2>
 
